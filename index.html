@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alton Wong | Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul class="nav-left">
+                <li><a href="#home" class="nav-link" id="home-link">ALTON WONG</a></li>
+            </ul>
+            <div class="nav-right">
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link">ABOUT</a></li>
+                    <li><a href="#skills" class="nav-link">SKILLS</a></li>
+                    <li><a href="#project" class="nav-link">PROJECTS</a></li>
+                    <li><a href="#contact" class="nav-link">CONTACT</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <h1>HEY, I'M ALTON!</h1>
+            <p>Computer Science & Cybersecurity Major</p>
+            <button id="down-button" class="down-button"><i class="fas fa-chevron-down"></i></button>
+        </section>
+
+        <section id="about" class="section">
+            <h1>GET TO KNOW ME</h1>
+            <img src="images/headshot.jpg" alt="Profile Picture" class="profile-picture">
+            <p>Hello, welcome to my portfolio website! My name is Alton, currently a second year student at <a href = "https://www.uwa.edu.au">University of Western Australia</a>, doing a Bachelor of Science Majoring in <a href = "https://www.uwa.edu.au/study/courses/computer-science">Computer Science</a> and <a href = "https://www.uwa.edu.au/study/courses/cybersecurity">Cybersecurity</a>. I have a deep passion for game development, design and thrive on tackling challening problems. I aspire to one day make a game of my own that can bring smiles to people's faces the same way some games have done for me.</p>
+            <p>Outside of studying and coding, I enjoy gaming, reading and swimming!</p>
+        </section>
+
+        <section id="skills" class="section">
+            <h1>My Skills/Tech Used</h1>
+            <p>This is the skills section.</p>
+        </section>
+
+        <section id="project" class="section">
+            <h1>My Projects</h1>
+            <p>more coming soon!</p>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="images/project1.jpg" alt="Project 1">
+                        <img src="images/project2.jpg" alt="Project 2">
+                        <img src="images/project3.jpg" alt="Project 3">
+                    </div>
+                </div>
+                <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h1>Contact Me</h1>
+            <p>This is the contact section.</p>
+            <div class="fixed-icons">
+                <a href="mailto:altonwong888@gmail.com"><img src="images/email.png" alt="Email" class="icon"></a>
+                <a href="https://github.com/ZenFlamex"><img src="images/github.png" alt="GitHub" class="icon"></a>
+                <a href="https://www.linkedin.com/in/alton-wong-9b17b5214/"><img src="images/linkedin.png" alt="LinkedIn" class="icon"></a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

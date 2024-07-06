@@ -1,0 +1,282 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-weight: 400;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    background: transparent;
+    color: #fff;
+    z-index: 1000;
+    transition: background 1s, padding 0.5s;
+}
+
+header.scrolled {
+    background: #000000;
+    padding: 0.7rem 1rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-left li a {
+    font-size: 1.2rem; 
+}
+
+.nav-right {
+    justify-content: flex-end;
+    position: relative;
+    padding-right: 3rem; 
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; 
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.80rem;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+
+
+
+nav ul li a.active {
+    background: #555;
+    
+}
+
+nav ul li a:hover {
+    color: #a1a1a1;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+    flex-direction: column;
+    padding: 1rem;
+    box-sizing: border-box;
+    word-wrap: break-word; 
+}
+
+section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+#home {
+    background: url('images/HomeBG.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+#home h1, #home p {
+    position: relative;
+    z-index: 2;
+}
+
+#home h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+#about {
+    background: #ffffff;
+    color: #000000;
+    padding-left: 25%; 
+    padding-right: 25%; 
+    
+}
+
+#about p {
+    line-height: 1.6;
+}
+
+.profile-picture {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    margin: 1rem 0;
+    object-fit: cover; 
+}
+
+#about a {
+    text-decoration: none; 
+    border-bottom: 3px solid rgb(43, 142, 182); 
+    color: inherit; 
+    transition: background-color 0.5s, color 0.5s; 
+}
+
+#about a:hover {
+    background-color: rgb(43, 142, 182);
+    color: rgb(255, 255, 255);  
+}
+
+
+
+#skills {
+    background: #555;
+    color: #fff;
+    
+}
+
+#project {
+    background: #7e7e7e;
+    color: #fff;
+    
+}
+
+#contact {
+    background: #666;
+    color: #fff;
+    
+}
+
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 1rem 0rem;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    background: #000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    flex-direction: column; 
+    width: 200px; 
+}
+
+.dropdown-menu.open {
+    display: flex;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background: #555;
+    color: #a1a1a1; 
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.down-button {
+    position: absolute;
+    bottom: 20px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.3s;
+    padding: 30px; 
+}
+
+.down-button:hover {
+    color: #a1a1a1;
+}
+
+
+.fixed-icons a img {
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.fixed-icons a img:hover {
+    transform: scale(1.2);
+}
+
+.icon {
+    filter: invert(100%);
+    transition: filter 0.3s;
+}
+
