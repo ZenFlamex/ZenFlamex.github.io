@@ -4,35 +4,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section');
     const hamburger = document.getElementById('hamburger');
     const dropdownMenu = document.createElement('ul');
-    dropdownMenu.classList.add('dropdown-menu');
-    document.querySelector('.nav-right').appendChild(dropdownMenu);
-
     const downButton = document.getElementById('down-button');
     const aboutSection = document.getElementById('about');
+    const navRight = document.querySelector('.nav-right');
+    const navMenuLinks = document.querySelectorAll('.nav-menu li a');
+
+    dropdownMenu.classList.add('dropdown-menu');
+    navRight.appendChild(dropdownMenu);
 
     downButton.addEventListener('click', function() {
-        aboutSection.scrollIntoView({
-            behavior: 'smooth'
-        });
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
     });
-    
-    document.querySelectorAll('.nav-menu li a').forEach(link => {
+
+    navMenuLinks.forEach(link => {
         const clonedLink = link.cloneNode(true);
         const li = document.createElement('li');
         li.appendChild(clonedLink);
         dropdownMenu.appendChild(li);
-
-    
     });
 
     function onScroll() {
         const scrollPos = window.scrollY;
-
-        if (scrollPos > 0) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', scrollPos > 0);
 
         const scrollMiddle = scrollPos + window.innerHeight / 2;
         sections.forEach(section => {
@@ -51,14 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.addEventListener('scroll', onScroll);
-    onScroll(); 
+    onScroll();
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         });
     });
 
@@ -67,9 +58,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     dropdownMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             dropdownMenu.classList.remove('open');
         });
     });
-});
+    
 
+    // Carousel functionality
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide img');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        const carouselContainer = document.querySelector('.carousel-container');
+        const offset = index * -100;
+        carouselContainer.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    function previousSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    document.querySelector('.carousel-next').addEventListener('click', nextSlide);
+    document.querySelector('.carousel-prev').addEventListener('click', previousSlide);
+
+    // Auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
+});
