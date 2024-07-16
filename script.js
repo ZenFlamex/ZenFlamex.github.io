@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Header and Navigation Elements
     const header = document.querySelector('header');
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
@@ -12,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
     dropdownMenu.classList.add('dropdown-menu');
     navRight.appendChild(dropdownMenu);
 
+    // Smooth Scroll for Down Button
     downButton.addEventListener('click', function() {
         aboutSection.scrollIntoView({ behavior: 'smooth' });
     });
 
+    // Clone and Append Navigation Links to Dropdown Menu
     navMenuLinks.forEach(link => {
         const clonedLink = link.cloneNode(true);
         const li = document.createElement('li');
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownMenu.appendChild(li);
     });
 
+    // Scroll Event Listener
     function onScroll() {
         const scrollPos = window.scrollY;
         header.classList.toggle('scrolled', scrollPos > 0);
@@ -46,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', onScroll);
     onScroll();
 
+    // Smooth Scroll for Navigation Links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -53,10 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Hamburger Menu Toggle
     hamburger.addEventListener('click', () => {
         dropdownMenu.classList.toggle('open');
     });
 
+    // Smooth Scroll for Dropdown Menu Links
     dropdownMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -64,9 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdownMenu.classList.remove('open');
         });
     });
-    
 
-    // Carousel functionality
+    // Carousel Functionality
     let currentIndex = 0;
     const slides = document.querySelectorAll('.carousel-slide img');
     const totalSlides = slides.length;
@@ -76,20 +82,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const offset = index * -100;
         carouselContainer.style.transform = `translateX(${offset}%)`;
     }
+});
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
+document.addEventListener("DOMContentLoaded", function() {
+    // Slider Functionality
+    const sliderImages = document.querySelectorAll(".slider-img");
+
+    function handleSliderClick(event) {
+        sliderImages.forEach(function(img) {
+            img.classList.remove("active");
+        });
+        event.currentTarget.classList.add("active");
     }
 
-    function previousSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(currentIndex);
+    function updateSliderBehavior() {
+        const isMobile = window.innerWidth <= 768;
+        sliderImages.forEach(function(sliderImg) {
+            sliderImg.removeEventListener("click", handleSliderClick);
+            if (!isMobile) {
+                sliderImg.addEventListener("click", handleSliderClick);
+            } else {
+                sliderImg.classList.add("active"); // Ensure all slides are active in mobile view
+            }
+        });
     }
 
-    document.querySelector('.carousel-next').addEventListener('click', nextSlide);
-    document.querySelector('.carousel-prev').addEventListener('click', previousSlide);
-
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    window.addEventListener("resize", updateSliderBehavior);
+    updateSliderBehavior(); // Initial check
 });
