@@ -331,52 +331,162 @@ section h1 {
     color: #000000;
 }
 
+
+/* Project Carousel Styles */
 .carousel {
-    position: relative;
-    overflow: hidden;
-    width: 80%; 
-    height: 80vh; 
-    margin: 0 auto;
-}
-
-.carousel-container {
+    width: 100%;
+    height: 80vh;
+    margin-top: 20px;
+    background-image: url('Images/bg-img.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
-    transition: transform 0.5s ease;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .carousel .slider-images {
+    display: flex;
+    align-items: center;
+    gap: 21px;
+  }
+  
+  .carousel .slider-images img {
     width: 100%;
     height: 100%;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    height: 100%;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.carousel-prev, .carousel-next {
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .carousel .slider-img {
+    width: 110px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.7s ease;
+  }
+  
+  .carousel .slider-images .slider-img:first-child, .carousel .slider-images .slider-img:last-child {
+    height: 400px;
+  }
+  
+  .carousel .slider-images .slider-img:nth-child(2), .carousel .slider-images .slider-img:nth-child(6) {
+    height: 400px;
+  }
+  
+  .carousel .slider-images .slider-img:nth-child(3), .carousel .slider-images .slider-img:nth-child(4), .carousel .slider-images .slider-img:nth-child(5) {
+    height: 400px;
+  }
+  
+  .carousel h1 {
+    font-family: "Jost", sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    text-align: left;
+    text-transform: uppercase;
+    color: #fff;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
+    left: -10%;
+    transform: rotate(270deg);
+    transition: 0.7s ease;
+  }
+  
+  .carousel .details {
+    position: absolute;
+    bottom: 43px;
+    left: 43px;
+  }
+  
+  .carousel .details h2 {
+    font-family: "Jost", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 44px;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.7s ease;
+    display: none;
+  }
+  
+  .carousel .details p {
+    font-family: "Jost", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    line-height: 33px;
+    text-align: left;
+    color: #fff;
+    transition: 0.7s ease;
+    display: none;
+  }
+  
+  .carousel .slider-img.active {
+    width: 1000px !important;
+    height: 600px !important;
+  }
+  
+  .carousel .slider-img.active h1 {
+    display: none;
+  }
+  
+  .carousel .slider-img.active .details p, .carousel .slider-img.active .details h2 {
+    display: block;
+  }
+  
+
+  .project-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
-    z-index: 2;
+    border-radius: 5px;
+    transition: transform 0.3s; 
 }
 
-.carousel-prev {
-    left: 0px;
+.project-button:hover {
+    transform: scale(1.2);
 }
 
-.carousel-next {
-    right: 0px;
+
+.slider-img:not(.active) .project-button {
+    display: none;
 }
+
+@media (max-width: 768px) {
+    .carousel {
+        overflow: hidden;
+        height: auto; 
+    }
+
+    .slider-container, .slider-images {
+        width: 100%;
+    }
+
+    .slider-img {
+        display: none;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .slider-img.active {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
 
 #contact {
     background: #666;
@@ -397,4 +507,36 @@ section h1 {
 .icon {
     filter: invert(100%);
     transition: filter 0.3s;
+}
+
+.resume-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.resume-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.resume-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.resume-thumbnail {
+    display: block;
+    margin: 1.5rem auto;
+    max-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
