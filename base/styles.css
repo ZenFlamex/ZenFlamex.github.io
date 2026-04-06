@@ -452,7 +452,7 @@ body::after {
 }
 
 .about-body p {
-  font-size: 0.9rem;
+  font-size: 0.83rem;
   line-height: 1.8;
   color: var(--text);
   margin-bottom: 0.8rem;
@@ -470,12 +470,12 @@ body::after {
 .about-section { margin-top: 1rem; }
 .about-section p { margin-bottom: 0; }
 
-.about-cta { margin-top: 1rem; font-size: 0.9rem; }
+.about-cta { margin-top: 1rem; font-size: 0.83rem; }
 
 .about-list {
   list-style: disc;
   padding-left: 1.2rem;
-  font-size: 0.9rem;
+  font-size: 0.83rem;
   line-height: 1.9;
   color: var(--text);
 }
@@ -533,14 +533,14 @@ body::after {
 
 .proj-name {
   font-family: 'Playfair Display', serif;
-  font-size: 0.97rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--warm-brown);
   margin-bottom: 0.3rem;
 }
 
 .proj-desc {
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   line-height: 1.55;
   color: var(--text-light);
 }
@@ -573,7 +573,7 @@ body::after {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.4rem 0.85rem;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--mid-brown);
   transition: all 0.18s;
 }
@@ -641,7 +641,7 @@ body::after {
 
 .lt-name {
   font-family: 'Lora', serif;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   letter-spacing: 0.04em;
   color: inherit;
 }
@@ -656,8 +656,8 @@ body::after {
 
 /* ── CONTACT ────────────────────────────────────────── */
 .contact-content { display: flex; flex-direction: column; gap: 0.9rem; }
-.contact-blurb { font-size: 0.9rem; line-height: 1.75; color: var(--text-light); user-select: text; }
-.contact-email-line { font-size: 0.92rem; line-height: 1.7; color: var(--text); user-select: text; }
+.contact-blurb { font-size: 0.82rem; line-height: 1.75; color: var(--text-light); user-select: text; }
+.contact-email-line { font-size: 0.85rem; line-height: 1.7; color: var(--text); user-select: text; }
 .contact-email-line strong { color: var(--warm-brown); }
 
 .btn-primary {
@@ -729,14 +729,14 @@ body::after {
 }
 
 .music-song {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--warm-brown);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.music-artist { font-size: 0.75rem; color: var(--text-light); }
+.music-artist { font-size: 0.67rem; color: var(--text-light); }
 
 .music-genre {
   font-size: 0.62rem;
@@ -1023,7 +1023,7 @@ body::after {
   .win { width: calc(100vw - 0.5rem); height: calc(100vh - 4rem); }
   .win-small { width: calc(100vw - 0.5rem); height: 65vh; }
   .about-top { gap: 0.9rem; }
-  .about-avatar { width: 110px; height: 110px; font-size: 2rem; }
+  .about-avatar { width: 72px; height: 72px; font-size: 2rem; }
   #home-nav { gap: 1.4rem; }
   .nav-icon-img { width: 64px; height: 64px; }
   .nav-icon-img svg { width: 28px; height: 28px; }

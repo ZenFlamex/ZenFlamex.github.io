@@ -97,26 +97,10 @@ const PROJECTS = [
 
 // ── SOUND ─────────────────────────────────────────────────────
 let soundOn = true;
-
-// ── RAIN BG ───────────────────────────────────────────────────
-const rainBg = new Audio('sound/rain-bg.mp3');
-rainBg.loop = true;
-rainBg.volume = 0.15;
-
-document.addEventListener('click', function startRain() {
-  if (soundOn) rainBg.play().catch(() => {});
-  document.removeEventListener('click', startRain);
-}, { once: true });
-
 document.getElementById('sound-toggle').classList.add('active');
 document.getElementById('sound-toggle').addEventListener('click', function () {
   soundOn = !soundOn;
   this.classList.toggle('active', soundOn);
-  if (soundOn) {
-    rainBg.play().catch(() => {});
-  } else {
-    rainBg.pause();
-  }
 });
 
 function playClick() {
@@ -134,7 +118,7 @@ let zTop = 200;
 // Default sizes per window id
 const WIN_SIZES = {
   about:    { w: 680, h: 560, fixedH: true },
-  projects: { w: 720, h: 580, fixedH: true, autoH: true },
+  projects: { w: 720, h: 580, fixedH: true },
   skills:   { w: 620, h: 540, autoH: true },
   links:    { w: 520, h: 460, autoH: true },
   contact:  { w: 540, h: 480, autoH: true },
@@ -509,20 +493,6 @@ document.getElementById('img-viewer').addEventListener('click', e => {
 
 document.getElementById('img-viewer-prev').addEventListener('click', e => { e.stopPropagation(); _viewerNav(-1); });
 document.getElementById('img-viewer-next').addEventListener('click', e => { e.stopPropagation(); _viewerNav(1); });
-
-// Mobile swipe in image viewer
-(function () {
-  const viewer = document.getElementById('img-viewer');
-  let swipeStartX = 0;
-  viewer.addEventListener('touchstart', e => {
-    swipeStartX = e.touches[0].clientX;
-  }, { passive: true });
-  viewer.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - swipeStartX;
-    if (Math.abs(dx) < 50) return; // ignore taps
-    _viewerNav(dx < 0 ? 1 : -1);
-  }, { passive: true });
-})();
 
 function closeLightbox() {
   overlay.classList.remove('open');
