@@ -120,6 +120,14 @@ document.getElementById('sound-toggle').addEventListener('click', function () {
   }
 });
 
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    rainBg.pause();
+  } else if (soundOn) {
+    rainBg.play().catch(() => {});
+  }
+});
+
 function playClick() {
   if (!soundOn) return;
   try {
