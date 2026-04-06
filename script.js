@@ -128,6 +128,84 @@ function playClick() {
   } catch (e) {}
 }
 
+// ── MUSIC EMBEDS ──────────────────────────────────────────────
+let rainPausedBySpotify = false;
+let activeTrackId = null;
+let IFrameAPIRef = null;
+const spotifyControllers = new Map(); // trackId -> EmbedController
+const pendingTargets = [];            // targets queued before API ready
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+  IFrameAPIRef = IFrameAPI;
+  pendingTargets.forEach(initSpotifyEmbed);
+  pendingTargets.length = 0;
+};
+
+(function loadSpotifyAPI() {
+  const s = document.createElement('script');
+  s.src = 'https://open.spotify.com/embed/iframe-api/v1';
+  s.async = true;
+  document.head.appendChild(s);
+})();
+
+function initSpotifyEmbed(target) {
+  const trackId = target.dataset.trackId;
+  if (spotifyControllers.has(trackId)) return;
+
+  IFrameAPIRef.createController(target, {
+    uri: 'spotify:track:' + trackId,
+    height: '80',
+  }, (controller) => {
+    spotifyControllers.set(trackId, controller);
+    controller.addListener('playback_update', ({ data }) => {
+      // Only care about the currently active embed
+      if (trackId !== activeTrackId) return;
+      if (!data.isPaused) {
+        // Song started playing — pause rain
+        if (soundOn && !rainBg.paused) {
+          rainBg.pause();
+          rainPausedBySpotify = true;
+        }
+      } else {
+        // Song paused or ended — resume rain
+        if (rainPausedBySpotify && soundOn) {
+          rainBg.play().catch(() => {});
+          rainPausedBySpotify = false;
+        }
+      }
+    });
+  });
+}
+
+function toggleMusicEmbed(btn) {
+  const item   = btn.closest('.music-item');
+  const embed  = item.querySelector('.music-embed');
+  const target = embed.querySelector('.spotify-target');
+  const isOpen = embed.classList.contains('open');
+
+  // Close all embeds and deactivate buttons
+  document.querySelectorAll('.music-embed.open').forEach(e => e.classList.remove('open'));
+  document.querySelectorAll('.music-play-btn.active').forEach(b => b.classList.remove('active'));
+
+  if (!isOpen) {
+    embed.classList.add('open');
+    btn.classList.add('active');
+    activeTrackId = target.dataset.trackId;
+    if (IFrameAPIRef) {
+      initSpotifyEmbed(target);
+    } else {
+      pendingTargets.push(target);
+    }
+  } else {
+    // Collapsing — resume rain if this embed had paused it
+    activeTrackId = null;
+    if (rainPausedBySpotify && soundOn) {
+      rainBg.play().catch(() => {});
+      rainPausedBySpotify = false;
+    }
+  }
+}
+
 // ── WINDOW MANAGER ────────────────────────────────────────────
 let zTop = 200;
 
@@ -138,7 +216,7 @@ const WIN_SIZES = {
   skills:   { w: 620, h: 540, autoH: true },
   links:    { w: 520, h: 460, autoH: true },
   contact:  { w: 540, h: 480, autoH: true },
-  music:    { w: 440, h: 420, autoH: true },
+  music:    { w: 440, h: 560, fixedH: true },
 };
 
 // Staggered offset so windows don't all stack perfectly
