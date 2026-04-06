@@ -28,6 +28,7 @@ const PROJECTS = [
     year: '2025',
     shortDesc: 'This site — built from scratch with vanilla HTML, CSS, and JavaScript.',
     fullDesc: "My personal portfolio website, redesigned from scratch. My very first site was built two years ago during CFC's beginner project, when I was just starting out in web development and I think it's time for a refresh.",
+    github: 'https://github.com/ZenFlamex/ZenFlamex.github.io',
     live: 'v1.html',
     liveLabel: 'Old Site',
   },
