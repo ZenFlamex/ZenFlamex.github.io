@@ -85,6 +85,7 @@ const PROJECTS = [
       ctx.moveTo(d.x, d.y);
       ctx.lineTo(d.x - 1, d.y + d.len);
       ctx.stroke();
+
       d.y += d.speed;
       if (d.y > canvas.height) { d.y = -d.len; d.x = Math.random() * canvas.width; }
     });
@@ -344,6 +345,10 @@ function openWindow(id, triggerEl) {
   el.classList.add('open');
   focusWindow(el);
   playClick();
+  if (window._bookPhysics) {
+    window._bookPhysics.rebuild();
+    setTimeout(window._bookPhysics.rebuild, 0);
+  }
 }
 
 function closeWindow(id) {
