@@ -161,7 +161,19 @@ setTimeout(function initBook() {
   let dragOffsetX = 0;
   let dragOffsetY = 0;
 
+  function releaseBook() {
+    if (!dragging) return;
+    dragging = false;
+    bookEl.classList.remove('held');
+    document.body.style.cursor = '';
+    const { vx, vy } = getThrowVelocity();
+    Body.setStatic(bookBody, false);
+    Body.setVelocity(bookBody, { x: vx, y: vy });
+    velHistory.length = 0;
+  }
+
   bookEl.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
     e.preventDefault();
     dragging = true;
     bookEl.classList.add('held');
@@ -188,16 +200,10 @@ setTimeout(function initBook() {
     Body.setPosition(bookBody, { x: cx, y: cy });
   });
 
-  document.addEventListener('mouseup', () => {
-    if (!dragging) return;
-    dragging = false;
-    bookEl.classList.remove('held');
-    document.body.style.cursor = '';
-    const { vx, vy } = getThrowVelocity();
-    Body.setStatic(bookBody, false);
-    Body.setVelocity(bookBody, { x: vx, y: vy });
-    velHistory.length = 0;
-  });
+  document.addEventListener('mouseup',     releaseBook);
+  document.addEventListener('contextmenu', releaseBook);
+  window.addEventListener('mouseleave',    releaseBook);
+  window.addEventListener('blur',          releaseBook);
 
   // ── SYNC DOM ──────────────────────────────────────────────────
   function syncBook() {
