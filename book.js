@@ -129,8 +129,11 @@ setTimeout(function initBook() {
 
   // ── THUD SOUND ────────────────────────────────────────────────
   let lastThudTime = 0;
+  let audioUnlocked = false;
+  document.addEventListener('click', () => { audioUnlocked = true; }, { once: true });
 
   function playThud(speed) {
+    if (!audioUnlocked) return;
     if (typeof soundOn !== 'undefined' && !soundOn) return;
     const now = Date.now();
     if (now - lastThudTime < 180) return;
