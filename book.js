@@ -101,19 +101,19 @@ setTimeout(function initBook() {
   window._bookPhysics = { body: bookBody, w: BOOK_W, h: BOOK_D, active: true, rebuild: buildDomBodies };
 
   // VELOCITY TRACKING
-  const velHistory  = [];
+  const velHistory = [];
   const VEL_SAMPLES = 6;
-  let lastMouseX    = 0;
-  let lastMouseY    = 0;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
   let lastMouseTime = 0;
 
   function recordVelocity(x, y) {
     const now = performance.now();
-    const dt  = Math.max(now - lastMouseTime, 1);
+    const dt = Math.max(now - lastMouseTime, 1);
     velHistory.push({ vx: (x - lastMouseX) / dt, vy: (y - lastMouseY) / dt });
     if (velHistory.length > VEL_SAMPLES) velHistory.shift();
-    lastMouseX    = x;
-    lastMouseY    = y;
+    lastMouseX = x;
+    lastMouseY = y;
     lastMouseTime = now;
   }
 
@@ -157,7 +157,7 @@ setTimeout(function initBook() {
   });
 
   // DRAG
-  let dragging    = false;
+  let dragging = false;
   let dragOffsetX = 0;
   let dragOffsetY = 0;
 
@@ -180,11 +180,11 @@ setTimeout(function initBook() {
     Body.setStatic(bookBody, true);
     velHistory.length = 0;
 
-    const rect    = bookEl.getBoundingClientRect();
-    dragOffsetX   = e.clientX - (rect.left + BOOK_W / 2);
-    dragOffsetY   = e.clientY - (rect.top  + BOOK_D / 2);
-    lastMouseX    = e.clientX;
-    lastMouseY    = e.clientY;
+    const rect = bookEl.getBoundingClientRect();
+    dragOffsetX = e.clientX - (rect.left + BOOK_W / 2);
+    dragOffsetY = e.clientY - (rect.top  + BOOK_D / 2);
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
     lastMouseTime = performance.now();
 
     document.body.style.cursor = 'grabbing';
@@ -208,11 +208,11 @@ setTimeout(function initBook() {
   // SYNC DOM
   function syncBook() {
     const { x, y } = bookBody.position;
-    const angle     = bookBody.angle;
-    bookEl.style.left      = (x - BOOK_W / 2) + 'px';
-    bookEl.style.top       = (y - BOOK_D / 2) + 'px';
-    bookEl.style.width     = BOOK_W + 'px';
-    bookEl.style.height    = BOOK_D + 'px';
+    const angle = bookBody.angle;
+    bookEl.style.left = (x - BOOK_W / 2) + 'px';
+    bookEl.style.top = (y - BOOK_D / 2) + 'px';
+    bookEl.style.width = BOOK_W + 'px';
+    bookEl.style.height = BOOK_D + 'px';
     bookEl.style.transform = `rotate(${angle}rad)`;
   }
 
@@ -226,9 +226,9 @@ setTimeout(function initBook() {
     World.remove(world, wallL);
     World.remove(world, wallR);
     World.remove(world, ceiling);
-    floor   = Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 25, window.innerWidth * 3, 50, { isStatic: true, label: 'floor', friction: 0.8 });
-    wallL   = Bodies.rectangle(-25, window.innerHeight / 2, 50, window.innerHeight * 3, { isStatic: true, label: 'wall' });
-    wallR   = Bodies.rectangle(window.innerWidth + 25, window.innerHeight / 2, 50, window.innerHeight * 3, { isStatic: true, label: 'wall' });
+    floor = Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 25, window.innerWidth * 3, 50, { isStatic: true, label: 'floor', friction: 0.8 });
+    wallL = Bodies.rectangle(-25, window.innerHeight / 2, 50, window.innerHeight * 3, { isStatic: true, label: 'wall' });
+    wallR = Bodies.rectangle(window.innerWidth + 25, window.innerHeight / 2, 50, window.innerHeight * 3, { isStatic: true, label: 'wall' });
     ceiling = Bodies.rectangle(window.innerWidth / 2, -25, window.innerWidth * 3, 50, { isStatic: true, label: 'ceiling' });
     World.add(world, [floor, wallL, wallR, ceiling]);
     buildDomBodies();

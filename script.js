@@ -57,11 +57,11 @@ const PROJECTS = [
 // RAIN
 (function initRain() {
   const canvas = document.getElementById('rain-canvas');
-  const ctx    = canvas.getContext('2d');
-  let drops    = [];
+  const ctx = canvas.getContext('2d');
+  let drops = [];
 
   function resize() {
-    canvas.width  = window.innerWidth;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     drops = [];
     const count = Math.floor(canvas.width / 7);
@@ -80,7 +80,7 @@ const PROJECTS = [
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drops.forEach(d => {
       ctx.strokeStyle = `rgba(122,92,71,${d.opacity})`;
-      ctx.lineWidth   = 0.7;
+      ctx.lineWidth = 0.7;
       ctx.beginPath();
       ctx.moveTo(d.x, d.y);
       ctx.lineTo(d.x - 1, d.y + d.len);
@@ -188,8 +188,8 @@ function initSpotifyEmbed(target) {
 }
 
 function toggleMusicEmbed(btn) {
-  const item   = btn.closest('.music-item');
-  const embed  = item.querySelector('.music-embed');
+  const item = btn.closest('.music-item');
+  const embed = item.querySelector('.music-embed');
   const target = embed.querySelector('.spotify-target');
   const isOpen = embed.classList.contains('open');
 
@@ -246,7 +246,7 @@ function isMobile() {
 }
 
 function buildWindow(id, triggerEl) {
-  const el    = document.getElementById('win-' + id);
+  const el = document.getElementById('win-' + id);
   const title = el.getAttribute('data-title');
 
   // Tab bar
@@ -287,9 +287,9 @@ function buildWindow(id, triggerEl) {
   const h = Math.min(sz.h, maxH);
 
   const left = Math.max(8, Math.min((window.innerWidth  - sz.w) / 2 + ox, window.innerWidth  - sz.w - 8));
-  const top  = Math.max(8, Math.min((window.innerHeight - h) / 2 + oy, window.innerHeight - h - 8));
-  el.style.left  = left + 'px';
-  el.style.top   = top  + 'px';
+  const top = Math.max(8, Math.min((window.innerHeight - h) / 2 + oy, window.innerHeight - h - 8));
+  el.style.left = left + 'px';
+  el.style.top = top  + 'px';
   el.style.width = sz.w + 'px';
   if (sz.fixedH) el.style.height = h + 'px';
 
@@ -334,7 +334,7 @@ function openWindow(id, triggerEl) {
 
   // Desktop — reset transform-origin toward trigger
   if (triggerEl && el.dataset.built) {
-    const tr   = triggerEl.getBoundingClientRect();
+    const tr = triggerEl.getBoundingClientRect();
     const rect = el.getBoundingClientRect();
     const originX = tr.left + tr.width  / 2 - rect.left;
     const originY = tr.top  + tr.height / 2 - rect.top;
@@ -389,7 +389,7 @@ function makeDraggable(el, handle) {
 
     function onMove(e) {
       el.style.left = Math.max(0, startL + e.clientX - startX) + 'px';
-      el.style.top  = Math.max(0, startT + e.clientY - startY) + 'px';
+      el.style.top = Math.max(0, startT + e.clientY - startY) + 'px';
     }
     function onUp() {
       document.removeEventListener('mousemove', onMove);
@@ -402,7 +402,7 @@ function makeDraggable(el, handle) {
   // Touch
   handle.addEventListener('touchstart', e => {
     if (e.target === handle.querySelector('.win-close-btn')) return;
-    const t    = e.touches[0];
+    const t = e.touches[0];
     const rect = el.getBoundingClientRect();
     startX = t.clientX; startY = t.clientY;
     startL = rect.left;  startT = rect.top;
@@ -410,7 +410,7 @@ function makeDraggable(el, handle) {
     function onMove(e) {
       const t = e.touches[0];
       el.style.left = Math.max(0, startL + t.clientX - startX) + 'px';
-      el.style.top  = Math.max(0, startT + t.clientY - startY) + 'px';
+      el.style.top = Math.max(0, startT + t.clientY - startY) + 'px';
     }
     function onEnd() {
       document.removeEventListener('touchmove', onMove);
@@ -539,9 +539,9 @@ function openLightbox(i) {
 
   document.getElementById('lb-year').textContent = p.year || '';
 
-  document.getElementById('lb-tags').innerHTML    = p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('');
+  document.getElementById('lb-tags').innerHTML = p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('');
   document.getElementById('lb-title').textContent = p.name;
-  document.getElementById('lb-desc').textContent  = p.fullDesc;
+  document.getElementById('lb-desc').textContent = p.fullDesc;
 
   let actions = '';
   if (p.github) actions += `<a class="btn-primary" href="${p.github}" target="_blank">GitHub</a>`;
@@ -556,13 +556,13 @@ function openLightbox(i) {
 
 // IMAGE VIEWER
 let _viewerImages = [];
-let _viewerIdx    = 0;
+let _viewerIdx = 0;
 
 function openImageViewer(src, alt, images, idx) {
   _viewerImages = images && images.length ? images : [src];
-  _viewerIdx    = idx !== undefined ? idx : Math.max(0, _viewerImages.indexOf(src));
+  _viewerIdx = idx !== undefined ? idx : Math.max(0, _viewerImages.indexOf(src));
 
-  const img   = document.getElementById('img-viewer-img');
+  const img = document.getElementById('img-viewer-img');
   img.src = _viewerImages[_viewerIdx];
   img.alt = alt;
 

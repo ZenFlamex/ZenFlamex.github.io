@@ -1,20 +1,20 @@
 /* ROOT VARIABLES */
 :root {
-  --cream:         #f5f0e8;
-  --parchment:     #ede6d6;
-  --parchment2:    #e4dac8;
-  --terracotta:    #c4714a;
-  --terra-light:   #d4886a;
-  --sage:          #7a9e8a;
-  --warm-brown:    #4a3728;
-  --mid-brown:     #7a5c47;
-  --text:          #3a2e24;
-  --text-light:    #8a7060;
-  --border:        rgba(122, 92, 71, 0.18);
+  --cream: #f5f0e8;
+  --parchment: #ede6d6;
+  --parchment2: #e4dac8;
+  --terracotta: #c4714a;
+  --terra-light: #d4886a;
+  --sage: #7a9e8a;
+  --warm-brown: #4a3728;
+  --mid-brown: #7a5c47;
+  --text: #3a2e24;
+  --text-light: #8a7060;
+  --border: rgba(122, 92, 71, 0.18);
   --border-strong: rgba(122, 92, 71, 0.30);
-  --shadow:        rgba(58, 46, 36, 0.16);
-  --tab-h:         36px;
-  --win-radius:    10px;
+  --shadow: rgba(58, 46, 36, 0.16);
+  --tab-h: 36px;
+  --win-radius: 10px;
 }
 
 /* RESET */
