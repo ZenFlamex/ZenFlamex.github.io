@@ -1,4 +1,4 @@
-// ── PROJECT DATA ─────────────────────────────────────────────
+// PROJECT DATA
 const PROJECTS = [
   {
     emoji: '',
@@ -54,7 +54,7 @@ const PROJECTS = [
   },
 ];
 
-// ── RAIN ──────────────────────────────────────────────────────
+// RAIN
 (function initRain() {
   const canvas = document.getElementById('rain-canvas');
   const ctx    = canvas.getContext('2d');
@@ -97,10 +97,10 @@ const PROJECTS = [
   window.addEventListener('resize', resize);
 })();
 
-// ── SOUND ─────────────────────────────────────────────────────
+// SOUND
 let soundOn = true;
 
-// ── RAIN BG ───────────────────────────────────────────────────
+// RAIN BG
 const rainBg = new Audio('sound/rain-bg.mp3');
 rainBg.loop = true;
 rainBg.volume = 0.15;
@@ -138,7 +138,7 @@ function playClick() {
   } catch (e) {}
 }
 
-// ── MUSIC EMBEDS ──────────────────────────────────────────────
+// MUSIC EMBEDS
 let rainPausedBySpotify = false;
 let activeTrackId = null;
 let IFrameAPIRef = null;
@@ -216,7 +216,7 @@ function toggleMusicEmbed(btn) {
   }
 }
 
-// ── WINDOW MANAGER ────────────────────────────────────────────
+// WINDOW MANAGER
 let zTop = 200;
 
 // Default sizes per window id
@@ -375,7 +375,7 @@ function focusWindow(el) {
   el.style.zIndex = ++zTop;
 }
 
-// ── DRAG ──────────────────────────────────────────────────────
+// DRAG
 function makeDraggable(el, handle) {
   let startX, startY, startL, startT;
 
@@ -421,7 +421,7 @@ function makeDraggable(el, handle) {
   }, { passive: true });
 }
 
-// ── MOBILE NOTICE ─────────────────────────────────────────────
+// MOBILE NOTICE
 (function () {
   const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);;
   if (isMobile && !sessionStorage.getItem('mobile-notice-dismissed')) {
@@ -436,7 +436,7 @@ function makeDraggable(el, handle) {
   }
 })();
 
-// ── HOME NAV ──────────────────────────────────────────────────
+// HOME NAV
 document.querySelectorAll('.nav-icon-btn').forEach(btn => {
   btn.addEventListener('click', () => openWindow(btn.dataset.window, btn));
 });
@@ -449,13 +449,13 @@ document.querySelectorAll('#social-dock .dock-icon').forEach(a => {
   a.addEventListener('click', () => playClick());
 });
 
-// ── MOBILE BACKDROP DISMISS ────────────────────────────────────
+// MOBILE BACKDROP DISMISS
 document.getElementById('mobile-backdrop').addEventListener('click', () => {
   const open = document.querySelector('.win.mobile-sheet.open');
   if (open) closeWindow(open.id.replace('win-', ''));
 });
 
-// ── PROJECTS GRID ─────────────────────────────────────────────
+// PROJECTS GRID
 (function buildProjects() {
   const grid = document.getElementById('projects-grid');
   PROJECTS.forEach((p, i) => {
@@ -480,10 +480,10 @@ document.getElementById('mobile-backdrop').addEventListener('click', () => {
   });
 })();
 
-// ── LIGHTBOX ──────────────────────────────────────────────────
+// LIGHTBOX
 const overlay = document.getElementById('lightbox-overlay');
 
-// ── GALLERY DRAG-TO-SCROLL ────────────────────────────────────
+// GALLERY DRAG-TO-SCROLL
 let _galleryWasDragged = false;
 
 (function () {
@@ -554,7 +554,7 @@ function openLightbox(i) {
   playClick();
 }
 
-// ── IMAGE VIEWER ──────────────────────────────────────────────
+// IMAGE VIEWER
 let _viewerImages = [];
 let _viewerIdx    = 0;
 
@@ -632,7 +632,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ── COPY EMAIL ────────────────────────────────────────────────
+// COPY EMAIL
 function copyEmail(btn) {
   navigator.clipboard.writeText('altonwong888@gmail.com').then(() => {
     const orig = btn.textContent;

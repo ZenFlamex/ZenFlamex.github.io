@@ -1,4 +1,4 @@
-// ── BOOK PHYSICS ──────────────────────────────────────────────
+// BOOK PHYSICS
 setTimeout(function initBook() {
   if (window.innerWidth < 768) return;
   const { Engine, Runner, Bodies, Body, World, Events } = Matter;
@@ -6,12 +6,12 @@ setTimeout(function initBook() {
   const BOOK_W = 90;
   const BOOK_D = 115;
 
-  // ── ENGINE ────────────────────────────────────────────────────
+  // ENGINE
   const engine = Engine.create();
   engine.gravity.y = 2;
   const world = engine.world;
 
-  // ── FLOOR + WALLS ─────────────────────────────────────────────
+  // FLOOR + WALLS
   let floor = Bodies.rectangle(
     window.innerWidth / 2, window.innerHeight + 25,
     window.innerWidth * 3, 50,
@@ -34,7 +34,7 @@ setTimeout(function initBook() {
   );
   World.add(world, [floor, wallL, wallR, ceiling]);
 
-  // ── DOM COLLISION BODIES ──────────────────────────────────────
+  // DOM COLLISION BODIES
   const COLLIDABLE_SELECTORS = [
     '#home-title',
     '#home-sub',
@@ -66,7 +66,7 @@ setTimeout(function initBook() {
   setInterval(buildDomBodies, 300);
   buildDomBodies();
 
-  // ── BOOK BODY ─────────────────────────────────────────────────
+  // BOOK BODY
   const bookBody = Bodies.rectangle(
     window.innerWidth * 0.72,
     window.innerHeight * 0.25,
@@ -76,7 +76,7 @@ setTimeout(function initBook() {
   Body.setAngle(bookBody, Math.PI / 2);
   World.add(world, bookBody);
 
-  // ── BOOK DOM ──────────────────────────────────────────────────
+  // BOOK DOM
   const bookEl = document.createElement('div');
   bookEl.id = 'physics-book';
   bookEl.innerHTML = `
@@ -100,7 +100,7 @@ setTimeout(function initBook() {
   // Expose book transform for rain deflection + instant DOM rebuild
   window._bookPhysics = { body: bookBody, w: BOOK_W, h: BOOK_D, active: true, rebuild: buildDomBodies };
 
-  // ── VELOCITY TRACKING ─────────────────────────────────────────
+  // VELOCITY TRACKING
   const velHistory  = [];
   const VEL_SAMPLES = 6;
   let lastMouseX    = 0;
@@ -127,7 +127,7 @@ setTimeout(function initBook() {
     };
   }
 
-  // ── THUD SOUND ────────────────────────────────────────────────
+  // THUD SOUND
   let lastThudTime = 0;
   let audioUnlocked = false;
   document.addEventListener('click', () => { audioUnlocked = true; }, { once: true });
@@ -146,7 +146,7 @@ setTimeout(function initBook() {
     } catch (e) {}
   }
 
-  // ── COLLISION → THUD ──────────────────────────────────────────
+  // COLLISION → THUD
   Events.on(engine, 'collisionStart', (e) => {
     e.pairs.forEach(pair => {
       const isBook = pair.bodyA.label === 'book' || pair.bodyB.label === 'book';
@@ -156,7 +156,7 @@ setTimeout(function initBook() {
     });
   });
 
-  // ── DRAG ──────────────────────────────────────────────────────
+  // DRAG
   let dragging    = false;
   let dragOffsetX = 0;
   let dragOffsetY = 0;
@@ -205,7 +205,7 @@ setTimeout(function initBook() {
   window.addEventListener('mouseleave',    releaseBook);
   window.addEventListener('blur',          releaseBook);
 
-  // ── SYNC DOM ──────────────────────────────────────────────────
+  // SYNC DOM
   function syncBook() {
     const { x, y } = bookBody.position;
     const angle     = bookBody.angle;
@@ -216,11 +216,11 @@ setTimeout(function initBook() {
     bookEl.style.transform = `rotate(${angle}rad)`;
   }
 
-  // ── RUNNER + LOOP ─────────────────────────────────────────────
+  // RUNNER + LOOP
   Runner.run(Runner.create(), engine);
   (function loop() { syncBook(); requestAnimationFrame(loop); })();
 
-  // ── RESIZE ────────────────────────────────────────────────────
+  // RESIZE
   window.addEventListener('resize', () => {
     World.remove(world, floor);
     World.remove(world, wallL);
