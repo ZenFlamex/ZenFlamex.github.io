@@ -1,4 +1,4 @@
-/* ── ROOT VARIABLES ─────────────────────────────────── */
+/* ROOT VARIABLES */
 :root {
   --cream:         #f5f0e8;
   --parchment:     #ede6d6;
@@ -17,7 +17,7 @@
   --win-radius:    10px;
 }
 
-/* ── RESET ──────────────────────────────────────────── */
+/* RESET */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
@@ -51,7 +51,7 @@ body::after {
   z-index: 9001;
 }
 
-/* ── RAIN ───────────────────────────────────────────── */
+/* RAIN */
 #rain-canvas {
   position: fixed;
   inset: 0;
@@ -60,7 +60,7 @@ body::after {
   opacity: 0.55;
 }
 
-/* ── HOME SCREEN ────────────────────────────────────── */
+/* HOME SCREEN */
 #home-screen {
   position: fixed;
   inset: 0;
@@ -97,7 +97,7 @@ body::after {
   margin-bottom: 3.2rem;
 }
 
-/* ── ICON NAV ───────────────────────────────────────── */
+/* ICON NAV */
 #home-nav {
   display: flex;
   gap: 2.2rem;
@@ -155,7 +155,7 @@ body::after {
   color: inherit;
 }
 
-/* ── SOCIAL DOCK ────────────────────────────────────── */
+/* SOCIAL DOCK */
 #social-dock {
   position: fixed;
   bottom: 1.5rem;
@@ -202,7 +202,7 @@ body::after {
   z-index: 9500;
 }
 
-/* ── SOUND TOGGLE ───────────────────────────────────── */
+/* SOUND TOGGLE */
 #sound-toggle {
   position: fixed;
   top: 1.5rem;
@@ -236,7 +236,7 @@ body::after {
 #sound-toggle.active .icon-sound-off { display: none; }
 #sound-toggle.active .icon-sound-on  { display: block; }
 
-/* ── WINDOW — POP ANIMATION ─────────────────────────── */
+/* WINDOW — POP ANIMATION */
 /*
   Windows animate from a transform-origin set by JS to the
   position at which they land. We use a CSS keyframe triggered
@@ -289,7 +289,7 @@ body::after {
   height: auto;
 }
 
-/* ── SIMPLE TAB BAR ─────────────────────────────────── */
+/* SIMPLE TAB BAR */
 .win-tabbar {
   height: var(--tab-h);
   background: var(--parchment2);
@@ -338,7 +338,7 @@ body::after {
   color: var(--terracotta);
 }
 
-/* ── WINDOW CONTENT ─────────────────────────────────── */
+/* WINDOW CONTENT */
 .win-content {
   flex: 1;
   overflow-y: auto;
@@ -367,7 +367,7 @@ body::after {
   letter-spacing: 0.03em;
 }
 
-/* ── ABOUT ──────────────────────────────────────────── */
+/* ABOUT */
 .about-layout {
   display: flex;
   flex-direction: column;
@@ -481,7 +481,7 @@ body::after {
 }
 
 
-/* ── PROJECTS ───────────────────────────────────────── */
+/* PROJECTS */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -554,7 +554,7 @@ body::after {
   color: var(--text-light);
 }
 
-/* ── SKILLS ─────────────────────────────────────────── */
+/* SKILLS */
 .skill-group { margin-bottom: 1.2rem; }
 
 .skill-label {
@@ -584,7 +584,7 @@ body::after {
   background: rgba(196,113,74,0.06);
 }
 
-/* ── LINKS ──────────────────────────────────────────── */
+/* LINKS */
 .win-content.links-content {
   display: flex;
   flex-direction: column;
@@ -654,7 +654,7 @@ body::after {
   text-align: center;
 }
 
-/* ── CONTACT ────────────────────────────────────────── */
+/* CONTACT */
 .contact-content { display: flex; flex-direction: column; gap: 0.9rem; }
 .contact-blurb { font-size: 0.9rem; line-height: 1.75; color: var(--text-light); user-select: text; }
 .contact-email-line { font-size: 0.92rem; line-height: 1.7; color: var(--text); user-select: text; }
@@ -700,7 +700,7 @@ body::after {
 .v1-note p { font-size: 0.72rem; color: var(--text-light); font-style: italic; margin-bottom: 0.3rem; }
 .v1-link { font-size: 0.72rem; color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(196,113,74,0.3); }
 
-/* ── MUSIC ──────────────────────────────────────────── */
+/* MUSIC */
 .music-list { display: flex; flex-direction: column; margin-bottom: 1rem; }
 
 .music-item {
@@ -780,7 +780,7 @@ body::after {
 
 .music-note { font-size: 0.7rem; color: var(--text-light); font-style: italic; }
 
-/* ── LIGHTBOX ───────────────────────────────────────── */
+/* LIGHTBOX */
 #lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -826,7 +826,7 @@ body::after {
   z-index: 2;
 }
 
-/* ── LIGHTBOX GALLERY ───────────────────────────────── */
+/* LIGHTBOX GALLERY */
 .lb-gallery-frame {
   border-radius: 14px 14px 0 0;
   overflow: hidden;
@@ -880,7 +880,7 @@ body::after {
   padding: 1rem;
 }
 
-/* ── LIGHTBOX BODY ──────────────────────────────────── */
+/* LIGHTBOX BODY */
 .lb-body {
   padding: 1.3rem 1.5rem 1.7rem;
   user-select: text;
@@ -921,7 +921,7 @@ body::after {
 
 #lb-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
-/* ── IMAGE VIEWER ───────────────────────────────────── */
+/* IMAGE VIEWER */
 #img-viewer {
   position: fixed;
   inset: 0;
@@ -975,7 +975,7 @@ body::after {
 
 
 
-/* ── MOBILE SHEET ───────────────────────────────────── */
+/* MOBILE SHEET */
 #mobile-backdrop {
   display: none;
   position: fixed;
@@ -1049,7 +1049,7 @@ body::after {
   .win.mobile-sheet .win-mobile-close { display: flex; }
 }
 
-/* ── RESPONSIVE ─────────────────────────────────────── */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .win { width: calc(100vw - 0.5rem); height: calc(100vh - 4rem); }
   .win-small { width: calc(100vw - 0.5rem); height: 65vh; }
@@ -1072,7 +1072,7 @@ body::after {
   opacity: 1;
 }
 
-/* ── MOBILE NOTICE ──────────────────────────────────── */
+/* MOBILE NOTICE */
 #mobile-notice {
   display: none;
   position: fixed;
@@ -1127,7 +1127,7 @@ body::after {
 
 #mobile-notice-ok:hover { background: var(--terra-light); }
 
-/* ── PHYSICS BOOK ───────────────────────────────────── */
+/* PHYSICS BOOK */
 #physics-book {
   position: fixed;
   z-index: 50;
