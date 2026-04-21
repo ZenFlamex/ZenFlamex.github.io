@@ -8,7 +8,7 @@ const PROJECTS = [
     year: '2025',
     shortDesc: 'React Native app helping nursing students track internship prerequisites and deadlines.',
     fullDesc: "Led a team of five to build a cross-platform mobile app for UWA's nursing department. Served as project lead with full client communication responsibilities. Stack: React Native, Expo, Supabase. Tracks vaccination requirements, placement deadlines, and clinical hours.",
-    github: 'https://github.com/ZenFlamex/CITS3200-STARS',
+    github: 'https://github.com/ZenFlamex/STARS-App',
   },
   {
     emoji: '',
